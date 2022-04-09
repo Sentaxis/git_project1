@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+body {
+    /* background-color: #2093C3;
+    background-color: #2BBDC2;
+    background-color: #219F9C;
+    background-color: #65C9D4;
+    background-color: #82EEFD;
+    background-color: #757C88;
+    background-color: #59788E; */
+    background-color: #F1F1F1;
+
+    color: #000000;
+
+    font-size: 16 px;
+    font-weight: normal;
+    font-family: 'Lato', sans-serif;
+}
+
+
+.functions {
+    background-color: #EFEFEF;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 100);
+
+    padding: 5px 0px;
+    margin-bottom: 5px;
+
+    text-align: center;
+
+}
+
+.text {"Каждый, кому приходилось заполнять листы для сбора анамнеза у врача в кабинете знает, что на это уходит немало времени: вопросов зачастую много, многие из них нужно обдумать, а на некоторые поискать ответы в медицинских картах.
+Из-за подобных трат времени людям приходится стоять в долгих 
+    margin-left: 100px;
+}
