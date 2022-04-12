@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/style_register.css">
+<link rel="stylesheet" href="https://snipp.ru/cdn/chosen/1.8.7/chosen.min.css">
+
+
+<form class="form" action="/register" method="post">
+  {{ form.hidden_tag() }}
+  <h2>Регистрация</h2>
+    <p type={{ form.login.label.text }}>{{ form.login(class="form-control") }}</p>
+    <p type={{ form.email.label.text }}>{{ form.email(type="email", class="form-control") }}</p>
+    <p type={{ form.name.label.text }}>{{ form.name(class="form-control") }}</p>
+    <p type={{ form.surname.label.text }}>{{ form.surname(class="form-control") }}</p>
+    <p type={{ form.patronymic.label.text }}>{{ form.patronymic(class="form-control") }}</p>
+    <p type={{ form.password.label.text }}>{{ form.password(type="password", class="form-control") }}</p>
+    <div class="select_wrp">
+	    <select class="js-chosen" name="clinic">
+            {% for c in hospitails %}
+		        <option value="{{ c['id'] }}">{{ c['address'] + c['title'] }}</option>
+            {% endfor %}
+	    </select>
+    </div>
+    {% if message %}
+      <p class="err_mes" type={{ message }}>{{ form.submit(class="form-control") }}</p>
+    {% else %}
+      <p>{{ form.submit(class="form-control") }}</p>
+    {% endif %}
+</form>
+
+<script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://snipp.ru/cdn/chosen/1.8.7/chosen.jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+	$('.js-chosen').chosen({
+		width: '100%',
+		no_results_text: 'Совпадений не найдено',
+		placeholder_text_single: 'Выберите город'
+	});
+});
+</script>
+
+{% endblock %}

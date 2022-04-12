@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<link rel="stylesheet" href="../static/css/style_base.css">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Медицина.ру</title> <!-- Название сайта -->
+</head>
+
+<body>
+
+  <header class="mt-2 mb-2" role="banner">
+    <!-- Картинки в верхней части -->
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 logotip">
+          <a href="/"> <img src="../static/img/logo_image.png" alt="web-revenue.ru"></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <nav id="navigation" class="navbar sticky-top navbar-expand-lg navbar-light bg-light" role="navigation">
+    <!-- Блок кнопок навигации -->
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTop2"
+        aria-controls="navbarTop2" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTop2">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/">Главная</a>
+          </li>
+          {% if user.__class__.__name__ == 'Patient' %}  <!-- Функционал авторизованного пользователя -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Меню</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/profile">Профиль</a>
+                <a class="dropdown-item" href="/questionnaires">Список анкет</a>
+                <a class="dropdown-item" href="/logout">Выход</a>
+              </div>
+            </li>
+          {% elif user.__class__.__name__ == 'Doctor' %}  <!-- Функционал доктора -->
+            <li class="nav-item"><a class="nav-link" href="/questionnaires_list">Список непрочитанных анкет</a></li>
+          {% elif user.__class__.__name__ == 'Moderator' %}  <!-- Функционал модератора -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Управление анкетами</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/questionnaires_new">Создать анкету</a>
+                <a class="dropdown-item" href="/questionnaires_list">Список анкет</a>
+              </div>
+            </li>
+          {% elif user.__class__.__name__ == 'Admin' %}  <!-- Функционал администратора -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Управление сотрудниками</a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/moderator_register">Регистрация модератора</a>
+                <a class="dropdown-item" href="/doctor_register">Регистрация врача</a>
+                <a class="dropdown-item" href="/collaborator_list">Список сотрудников</a>
+              </div>
+            </li>
+          {% elif user.__class__.__name__ == 'Globaladmin' %}  <!-- Функционал главного администратора -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">Управление больницами</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="/clinic_register">Регистрация больницы</a>
+              <a class="dropdown-item" href="/clinic_list">Список больниц</a>
+            </div>
+          </li>
+          {% endif %}
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            {% if not user %}
+              <li class="nav-item"><a class="nav-link" href="/register">Регистрация</a></li>
+              <li class="nav-item active"><a class="nav-link" href="/login">Вход</a></li>
+            {% else %}
+              <li class="nav-item"><a class="nav-link" href="/profile">{{ user.surname + ' ' + user.name + ' ' + user.patronymic }}</a></li>
+              <li class="nav-item active"><a class="nav-link" href="/logout">Выход</a></li>
+            {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js"
+    integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1"
+    crossorigin="anonymous"></script>
+  <script>$(document).ready(function () {
+      $(".btn-search").click(function () {
+        $(".d-none").toggleClass("d-block"); return false;
+      });
+    });</script>
+
+  <main role="main" class="container">
+    {% block content %}{% endblock %}
+  </main>
+</body>
+</html>

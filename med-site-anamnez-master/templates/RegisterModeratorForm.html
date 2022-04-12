@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/style_register_moderator.css">
+<link rel="stylesheet" href="https://snipp.ru/cdn/chosen/1.8.7/chosen.min.css">
+
+
+<form class="form" action="/register" method="post">
+  {{ form.hidden_tag() }}
+  <h2>Регистрация модератора</h2>
+    <p type={{ form.login.label.text }}>{{ form.login(class="form-control") }}</p>
+    <p type={{ form.name.label.text }}>{{ form.name(class="form-control") }}</p>
+    <p type={{ form.surname.label.text }}>{{ form.surname(class="form-control") }}</p>
+    <p type={{ form.patronymic.label.text }}>{{ form.patronymic(class="form-control") }}</p>
+    <p type={{ form.password.label.text }}>{{ form.password(type="password", class="form-control") }}</p>
+    {% if message %}
+      <p class="err_mes" type={{ message }}>{{ form.submit(class="form-control") }}</p>
+    {% else %}
+      <p>{{ form.submit(class="form-control") }}</p>
+    {% endif %}
+</form>
+
+{% endblock %}

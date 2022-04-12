@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" href="../static/css/style_login.css">
+
+
+<form class="form" action="/login" method="post">
+  {{ form.hidden_tag() }}
+  <h2>Авторизация</h2>
+    <p type={{ form.login.label.text }}>{{ form.login(class="form-control") }}</p>
+    <p type={{ form.password.label.text }}>{{ form.password(type="password", class="form-control") }}</p>
+    <ul class="horizon">
+      <li>{{ form.remember_me.label }}</li>
+      <li>{{ form.remember_me() }}</li>
+    </ul>
+    {{ form.submit(class="form-control") }}
+    {% if message %}
+      <div class="alert alert-error" role="alert">
+        {{ message }}
+      </div>
+    {% endif %}
+</form>
+
+{% endblock %}
