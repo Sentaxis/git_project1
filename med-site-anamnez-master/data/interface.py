@@ -18,4 +18,10 @@ def index():
     user =  flask_login.current_user
     if user.is_anonymous:
         user = None
-    return render_template('MainForm.html', user=user)
+    return render_template('MainForm.html', user=user, qui={'Кровосток': 'https://genius.com/albums/Krovostok/Blood-river',
+    'Градиент': 'https://uigradients.com/#Quepal',
+    'Словари': 'https://pythonworld.ru/tipy-dannyx-v-python/slovari-dict-funkcii-i-metody-slovarej.html',
+    'Слайд': 'https://www.avito.ru/kazan/muzykalnye_instrumenty/slayd_keramicheskiy_dlya_gitary_2312251328?slocation=621585',
+    'Мафия': 'https://www.youtube.com/watch?v=B0veWDpV46c',
+    'Daughter - All I Wanted': 'https://www.youtube.com/watch?v=isges2l3qaY'},
+    type='Список анкет')

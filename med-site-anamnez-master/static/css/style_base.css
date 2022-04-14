@@ -101,41 +101,39 @@ li.nav-item{padding:0 15px}
 
 }
 
-.text {
-    margin-left: 100px;
-    color: #606060;
-}
+
 
 .boxes{
     display: flex;
     flex-wrap: wrap;
-}
-
-.boxes div {
     padding: 10px;
     border: 1px solid silver;
     border-radius: 5px;
     flex-basis: 35%;
     margin: 5px;
     background-color: #FFFFFF;
+}
 
-}
-.box-1, .box-3 {
-    flex: 5;
-}
-.box-2, .box-4 {
-    flex: 3;
+.boxes:hover{
+    background: rgba(0,0,0,0);
+    color: #3a7999;
+    box-shadow: inset 0 0 0 3px #32a354;
+    
 }
 
 .form {
+    width: 480px;
+    height:auto;
     background: #e6e6e6;;
     box-shadow:0 0 40px -10px #000000;
     border-radius:8px;
+    margin:calc(26vh - 220px) auto;
+    margin-bottom: 100px;
 }
 
-.description {
-    margin-right: 20px;
-}
+div.problem > a {
+    text-decoration: none;
+  }
 
 h3, h5 {
 color: #505050;
@@ -143,5 +141,9 @@ color: #505050;
 
 p {
 color: #606060;
+}
+
+.problem {
+    align-items: center;
 }
 
